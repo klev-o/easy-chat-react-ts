@@ -1,5 +1,5 @@
 import io from 'socket.io-client';
-const ENDPOINT: string = 'localhost:9999'
+const ENDPOINT: string = 'https://easy-chat-react-ts.herokuapp.com/'
 
 const socket = io(ENDPOINT);
 
