@@ -1,0 +1,45 @@
+.join-wrap {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    align-items: center;
+    background-color: #1A1A1D;
+}
+
+.join-wrap .inner {
+   padding: 10px;
+}
+
+.joinInput {
+    border-radius: 0;
+    padding: 15px 20px;
+    width: 100%;
+}
+
+.heading {
+    color: white;
+    font-size: 2.5em;
+    padding-bottom: 10px;
+    border-bottom: 2px solid white;
+}
+
+.button {
+    color: #fff !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #25ada6;
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+button:focus {
+    outline: 0;
+}
