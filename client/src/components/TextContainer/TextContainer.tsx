@@ -5,7 +5,7 @@ import onlineIcon from '../../icons/onlineIcon.png';
 import './textContainer.css';
 
 const TextContainer = ({ users }) => (
-    <div style={{maxHeight: '70px', overflowY: 'scroll', background: '#e8e8e8'}}>
+    <div style={{minHeight: '70px', overflowY: 'scroll', background: '#e8e8e8'}}>
         {
             users
                 ? (

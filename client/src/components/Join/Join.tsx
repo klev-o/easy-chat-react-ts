@@ -1,11 +1,16 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom'
 import './join.css'
+import socket from "../../socket";
 
 export const Join: React.FC = () => {
 
     const [name, setName] = React.useState<string>('');
     const [room, setRoom] = React.useState<string>('');
+
+    React.useEffect(() => {
+        socket.emit('disconnect');
+    }, []);
 
     return (
         <div className="join-wrap">
