@@ -1,11 +1,13 @@
 import React from 'react';
 import queryString from 'query-string';
-import io from "socket.io-client";
+import socket from "../../socket";
 import './chat.css'
 import InfoBar from "../InfoBar/InfoBar";
 import Input from "../Input/Input";
+import Messages from "../Messages/Messages";
+import TextContainer from "../TextContainer/TextContainer";
 
-let socket;
+
 
 export const Chat: React.FC = () => {
 
@@ -14,12 +16,10 @@ export const Chat: React.FC = () => {
     const [users, setUsers] = React.useState('');
     const [message, setMessage] = React.useState('');
     const [messages, setMessages] = React.useState<object[]>([]);
-    const ENDPOINT: string = 'localhost:9999'
+
 
     React.useEffect(() => {
         const { name, room } = queryString.parse(window.location.search);
-
-        socket = io(ENDPOINT);
 
         setName(name);
         setRoom(room);
@@ -27,11 +27,12 @@ export const Chat: React.FC = () => {
         socket.emit('CHAT:JOIN', { name, room }, (error) => {
             if(error) {
                 alert(error);
+                //window.location.href = '/'
             }
         });
 
 
-    }, [ENDPOINT, window.location.search]);
+    }, [window.location.search]);
 
     React.useEffect(() => {
         socket.on('message', message => {
@@ -58,8 +59,11 @@ export const Chat: React.FC = () => {
         <div className="chat-wrap">
             <div className="container">
                 <InfoBar room={room} />
+                <Messages messages={messages} name={name} />
+                <TextContainer users={users}/>
                 <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
             </div>
+
         </div>
     )
 }
